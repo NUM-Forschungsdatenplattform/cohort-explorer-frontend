@@ -28,7 +28,7 @@
         ></fa-icon>
         {{
           currentNavItem.routeTo === 'home'
-            ? welcomePageTitle[currentLang]
+            ? (welcomePageTitle[currentLang] || "Cohort Explorer")
             : (currentNavItem.translationKey | translate)
         }}
       </h1>
