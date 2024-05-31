@@ -94,6 +94,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   setHeader(): void {
+    if (!this.currentNavId) {
+      this.currentNavItem = undefined
+      return
+    }
     const navItem = [...this.mainNavItems, ...secondaryNavItemsLoggedIn].find(
       (item) => item.routeTo === this.currentNavId
     )

@@ -1,13 +1,11 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { ContactComponent } from './components/contact/contact.component'
-import { DataProtectionComponent } from './components/data-protection/data-protection.component'
-import { ImprintComponent } from './components/imprint/imprint.component'
+import { LegalDocumentComponent } from './components/document/legal-document.component'
 
 const routes: Routes = [
-  { path: 'imprint', component: ImprintComponent },
-  { path: 'contact', component: ContactComponent },
-  { path: 'data-protection', component: DataProtectionComponent },
+  { path: 'imprint', component: LegalDocumentComponent },
+  { path: 'contact', component: LegalDocumentComponent },
+  { path: 'data-protection', component: LegalDocumentComponent },
 ]
 
 @NgModule({

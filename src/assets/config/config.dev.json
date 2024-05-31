@@ -11,7 +11,13 @@
     "clientId": "num-portal-webapp"
   },
   "legal": {
-    "copyrightOwner": "2024"
+    "copyrightOwner": "",
+    "imprint": "html",
+    "imprintUrl": "",
+    "dataProtection": "none",
+    "dataProtectionUrl": "",
+    "contact": "url",
+    "contactUrl": "https://example.com"
   },
   "welcomePageTitle": {
     "de": "",

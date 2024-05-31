@@ -5,31 +5,35 @@
   fxLayout.gt-sm="row"
   fxLayoutAlign="space-between center"
 >
-  <div>© {{ config.legal.copyrightOwner }}</div>
+  <div>
+    @if (config.legal.copyrightOwner) {
+      © {{ config.legal.copyrightOwner }}
+    }
+  </div>
 
   <section role="region" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="center center">
-    <a
-      (click)="menuItemClicked($event)"
-      mat-button
-      class="link-button"
-      [routerLink]="['legal/imprint']"
-      >{{ 'LEGAL.DISCLOSURE' | translate }}</a
-    >
-    <mat-divider [vertical]="true"></mat-divider>
-    <a
-      (click)="menuItemClicked($event)"
-      mat-button
-      class="link-button"
-      [routerLink]="['legal/data-protection']"
-      >{{ 'LEGAL.DATAPROTECTION' | translate }}</a
-    >
-    <mat-divider [vertical]="true"></mat-divider>
-    <a
-      (click)="menuItemClicked($event)"
-      mat-button
-      class="link-button"
-      [routerLink]="['legal/contact']"
-      >{{ 'LEGAL.CONTACT' | translate }}</a
-    >
+    @for (link of links; track link.query; ) {
+      @if (!link.url) {
+        <a
+          (click)="menuItemClicked($event)"
+          mat-button
+          class="link-button"
+          [routerLink]="[link.route]"
+        >{{ link.query | translate }}</a
+        >
+      } @else {
+        <a
+          (click)="menuItemClicked($event)"
+          mat-button
+          class="link-button"
+          href="{{ link.url }}"
+          target="_blank"
+        >{{ link.query | translate }}</a>
+
+      }
+      @if (!$last) {
+        <mat-divider [vertical]="true"></mat-divider>
+      }
+    }
   </section>
 </section>

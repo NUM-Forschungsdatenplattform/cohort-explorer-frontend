@@ -12,6 +12,12 @@ export interface IAppConfig {
   }
   legal: {
     copyrightOwner: string
+    imprint:  "none" | "html" | "url"
+    imprintUrl: string
+    dataProtection: "none" | "html" | "url"
+    dataProtectionUrl: string
+    contact:  "none" | "html" | "url"
+    contactUrl: string
   }
   welcomePageTitle: {
     de: string
