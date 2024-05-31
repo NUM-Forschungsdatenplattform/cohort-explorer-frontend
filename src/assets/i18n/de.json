@@ -533,17 +533,6 @@
       "TITLE": "Anzahl Patienten pro Einrichtung",
       "XLABEL": "Klinik",
       "DROPDOWN": "Bitte Klinik auswählen..."
-    },
-    "SOFA_SCORE": {
-      "TITLE": "Anzahl Patienten pro SOFA-Score (gruppiert)",
-      "XLABEL": "SOFA-Score",
-      "YLABEL": "Anzahl Patienten",
-      "DROPDOWN": "Bitte Klinik auswählen..."
-    },
-    "SOFA_SCORE_AVG": {
-      "TITLE": "Durchschnittlicher SOFA-Score pro Klinik",
-      "XLABEL": "Klinik",
-      "YLABEL": "Durchschnittlicher SOFA-Score"
     }
   },
   "DATE_TIME": {

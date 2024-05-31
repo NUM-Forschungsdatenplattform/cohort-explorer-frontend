@@ -1,7 +1,6 @@
 import { Component } from '@angular/core'
 import { ComponentFixture, TestBed } from '@angular/core/testing'
 import { ManagerToolsComponent } from './manager-tools.component'
-import { ManagerChartsComponent } from '../manager-charts/manager-charts.component'
 import { PseudonymResolverComponent } from '../pseudonym-resolver/pseudonym-resolver.component'
 
 describe('ManagerToolsComponent', () => {
@@ -19,7 +18,7 @@ describe('ManagerToolsComponent', () => {
     })
       .overrideComponent(ManagerToolsComponent, {
         remove: {
-          imports: [ManagerChartsComponent, PseudonymResolverComponent],
+          imports: [PseudonymResolverComponent],
         },
         add: {
           imports: [ManagerChartsStubComponent, PseudonymResolverStubComponent],
