@@ -531,17 +531,6 @@
       "TITLE": "Number of patients per institution",
       "XLABEL": "Clinic",
       "DROPDOWN": "Please select institution..."
-    },
-    "SOFA_SCORE": {
-      "TITLE": "Number of Patients per SOFA-Score (grouped)",
-      "XLABEL": "SOFA-Score",
-      "YLABEL": "Number of patients",
-      "DROPDOWN": "Please select clinic..."
-    },
-    "SOFA_SCORE_AVG": {
-      "TITLE": "Average SOFA-Score per Clinic",
-      "XLABEL": "Clinic",
-      "YLABEL": "Average SOFA-Score"
     }
   },
   "DATE_TIME": {
