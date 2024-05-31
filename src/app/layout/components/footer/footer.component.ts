@@ -6,6 +6,7 @@ import { MatAnchor } from '@angular/material/button'
 import { RouterLink } from '@angular/router'
 import { MatDivider } from '@angular/material/list'
 import { TranslatePipe } from '@ngx-translate/core'
+import { JsonPipe } from '@angular/common'
 
 @Component({
   selector: 'num-footer',
@@ -15,9 +16,26 @@ import { TranslatePipe } from '@ngx-translate/core'
 })
 export class FooterComponent {
   config: IAppConfig
+  links: { query: string; route: string | undefined; url: string | undefined }[]
 
   constructor(private appConfig: AppConfigService) {
     this.config = this.appConfig.config
+    this.links = []
+    if (this.config.legal.imprint === 'html') {
+      this.links.push({ query: 'LEGAL.DISCLOSURE', route: 'legal/imprint', url: undefined })
+    } else if (this.config.legal.imprint === 'url') {
+      this.links.push({ query: 'LEGAL.DISCLOSURE', route: undefined, url: this.config.legal.imprintUrl })
+    }
+    if (this.config.legal.dataProtection === 'html') {
+      this.links.push({ query: 'LEGAL.DATAPROTECTION', route: 'legal/data-protection', url: undefined })
+    } else if (this.config.legal.dataProtection === 'url') {
+      this.links.push({ query: 'LEGAL.DATAPROTECTION', route: undefined, url: this.config.legal.dataProtectionUrl })
+    }
+    if (this.config.legal.contact === 'html') {
+      this.links.push({ query: 'LEGAL.CONTACT', route: 'legal/contact', url: undefined })
+    } else if (this.config.legal.contact === 'url') {
+      this.links.push({ query: 'LEGAL.CONTACT', route: undefined, url: this.config.legal.contactUrl })
+    }
   }
 
   menuItemClicked($event: Event): void {
