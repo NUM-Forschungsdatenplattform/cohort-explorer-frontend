@@ -73,7 +73,9 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   openCardUrl(cardUrl: string): void {
-    window.open(cardUrl)
+    if (cardUrl) {
+      window.open(cardUrl)
+    }
   }
 
   getCurrentLang(): void {

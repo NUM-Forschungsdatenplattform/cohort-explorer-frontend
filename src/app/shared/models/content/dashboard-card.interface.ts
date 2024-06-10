@@ -8,6 +8,5 @@ export interface IDashboardCard {
     title: string
     text: string
   }
-  url: string
-  imageId: string
+  url: string | null
 }

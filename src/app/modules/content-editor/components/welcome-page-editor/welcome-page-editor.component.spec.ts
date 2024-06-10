@@ -26,7 +26,6 @@ describe('WelcomePageEditorComponent', () => {
     bodyTextEnglish: new FormControl('newTextEn'),
     bodyTextGerman: new FormControl('newTextGer'),
     url: new FormControl('url/test'),
-    imageId: new FormControl('INFORMATION'),
   })
 
   const moveUpEmitter = new EventEmitter()
