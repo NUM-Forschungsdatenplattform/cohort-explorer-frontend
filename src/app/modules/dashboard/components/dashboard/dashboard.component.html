@@ -18,11 +18,12 @@
 </section>
 
 <num-metrics></num-metrics>
+
 @if (isLoggedIn) {
   <num-latest-projects></num-latest-projects>
 }
 
-@if (isLoggedIn) {
+@if (isLoggedIn && cards?.length > 0) {
   <section fxLayout="column" class="section">
     <div class="header">
       <h3>{{ 'DASHBOARD.INFO_CARD.HEADER' | translate }}</h3>
@@ -35,14 +36,12 @@
           fxFlex.xs="100%"
           class="info-board"
           [ngStyle.xs]="{ 'no-margin-r': true }"
+          [style.cursor]="card.url ? 'pointer' : 'default'"
           (click)="openCardUrl(card.url)"
         >
-          <img
-            class="content-image"
-            [attr.src]="'assets/cards/' + card.imageId?.toLowerCase() + '.jpg'"
-            alt="card-icon"
-          />
-          <fa-icon class="info-board--icon" icon="external-link-alt"></fa-icon>
+          @if (card.url) {
+            <fa-icon class="info-board--icon" icon="external-link-alt"></fa-icon>
+          }
           <div class="content">
             <h4>{{ card[displayLang]?.title }}</h4>
             <p>
