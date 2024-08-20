@@ -73,7 +73,8 @@ export class DialogAqlBuilderComponent
 
     this.compositions = Array.from(this.aqbModel.contains.compositions.values())
 
-    if (this.dialogInput.mode === AqlBuilderDialogMode.DataRetrieval) {
+    if (this.dialogInput.mode === AqlBuilderDialogMode.DataRetrieval ||
+      this.dialogInput.mode === AqlBuilderDialogMode.Criteria) {
       this.aqbModel.selectDestination = AqbSelectDestination.Where
     }
   }
@@ -99,7 +100,22 @@ export class DialogAqlBuilderComponent
 
     return false
   }
-  isAllowedSelectionInEditor(clickEvent: IAqbSelectClick): boolean {
+
+  isAllowedSelectionInCriteria(clickEvent: IAqbSelectClick): boolean {
+    if (this.aqbModel.selectDestination === AqbSelectDestination.From) {
+      if (!clickEvent.item.rmType) {
+        return true
+      }
+    } else {
+      if (clickEvent.item.rmType) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  isAllowedSelectionInSearch(clickEvent: IAqbSelectClick): boolean {
     if (this.aqbModel.selectDestination === AqbSelectDestination.Select) {
       return true
     } else {
@@ -112,9 +128,14 @@ export class DialogAqlBuilderComponent
   }
 
   isAllowedSelection(clickEvent: IAqbSelectClick): boolean {
-    return this.dialogInput.mode === AqlBuilderDialogMode.DataRetrieval
-      ? this.isAllowedSelectionInRetrieval(clickEvent)
-      : this.isAllowedSelectionInEditor(clickEvent)
+    switch (this.dialogInput.mode) {
+      case AqlBuilderDialogMode.DataRetrieval:
+        return this.isAllowedSelectionInRetrieval(clickEvent)
+      case AqlBuilderDialogMode.Criteria:
+        return this.isAllowedSelectionInCriteria(clickEvent)
+      case AqlBuilderDialogMode.Search:
+        return this.isAllowedSelectionInSearch(clickEvent)
+    }
   }
 
   handleItemSelect(clickEvent: IAqbSelectClick): void {
@@ -142,4 +163,6 @@ export class DialogAqlBuilderComponent
   handleDialogCancel(): void {
     this.closeDialog.emit()
   }
+
+  protected readonly AqlBuilderDialogMode = AqlBuilderDialogMode
 }
