@@ -16,6 +16,7 @@ import { EditorDetermineHitsComponent } from '../../../../shared/components/edit
 import { ResultTableComponent } from '../../../../shared/components/result-table/result-table.component'
 import { MatProgressSpinner } from '@angular/material/progress-spinner'
 import { TranslatePipe } from '@ngx-translate/core'
+import { AqlBuilderDialogMode } from '../../../../shared/models/archetype-query-builder/aql-builder-dialog-mode.enum'
 
 @Component({
   templateUrl: './search.component.html',
@@ -69,4 +70,6 @@ export class SearchComponent extends AqlEditorCeatorComponent implements OnDestr
       })
     )
   }
+
+  protected readonly AqlBuilderDialogMode = AqlBuilderDialogMode
 }

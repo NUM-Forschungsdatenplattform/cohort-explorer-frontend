@@ -131,9 +131,9 @@ export class AqlEditorCeatorComponent {
     )
   }
 
-  openBuilderDialog(): void {
+  openBuilderDialog(mode: AqlBuilderDialogMode): void {
     const dialogContentPayload: IAqlBuilderDialogInput = {
-      mode: AqlBuilderDialogMode.AqlEditor,
+      mode: mode,
       model: this.aqbModel,
       selectedTemplateIds: this.selectedTemplateIds,
     }
@@ -200,4 +200,6 @@ export class AqlEditorCeatorComponent {
       this.updateDetermineHits(null, 'QUERIES.HITS.MESSAGE_SET_ALL_PARAMETERS')
     }
   }
+
+  protected readonly AqlBuilderDialogMode = AqlBuilderDialogMode
 }
