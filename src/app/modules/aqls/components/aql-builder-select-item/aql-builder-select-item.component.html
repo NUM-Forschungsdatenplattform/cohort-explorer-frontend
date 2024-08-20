@@ -1,7 +1,7 @@
 <section fxLayout="row wrap" fxLayoutGap="15px" fxLayoutAlign="start center">
   <div class="name-field mat-body-strong" data-test="aqb__select__item__name">
     <span>{{ item.name | archetype: true }}</span>
-    @if (item.isComposition) {
+    @if (item.modelType) {
       <span> ({{ item.templateId }})</span>
     }
   </div>

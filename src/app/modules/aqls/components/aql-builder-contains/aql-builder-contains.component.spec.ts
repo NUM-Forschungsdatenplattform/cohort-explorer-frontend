@@ -6,6 +6,7 @@ import { AqbUiModel } from '../../../../shared/models/aqb/aqb-ui.model'
 import { AqlBuilderContainsComponent } from './aql-builder-contains.component'
 import { TranslateModule } from '@ngx-translate/core'
 import { AqlBuilderContainsGroupComponent } from '../aql-builder-contains-group/aql-builder-contains-group.component'
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing'
 
 describe('AqlBuilderContainsComponent', () => {
   let component: AqlBuilderContainsComponent
@@ -36,7 +37,7 @@ describe('AqlBuilderContainsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AqlBuilderContainsComponent, ContainsGroupStubComponent, TranslateModule.forRoot()],
+      imports: [AqlBuilderContainsComponent, ContainsGroupStubComponent, TranslateModule.forRoot(), FontAwesomeTestingModule],
     })
       .overrideComponent(AqlBuilderContainsComponent, {
         remove: {

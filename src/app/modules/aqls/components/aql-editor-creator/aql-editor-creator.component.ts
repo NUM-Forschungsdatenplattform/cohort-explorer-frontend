@@ -25,6 +25,9 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { CodeEditorComponent } from '../../../code-editor/components/code-editor/code-editor.component'
 import { EditorDetermineHitsComponent } from '../../../../shared/components/editor-determine-hits/editor-determine-hits.component'
 import { TranslatePipe } from '@ngx-translate/core'
+import { AqbSelectDestination } from '../../../../shared/models/aqb/aqb-select-destination.enum'
+import { AqbSelectItemUiModel } from '../../../../shared/models/aqb/aqb-select-item-ui.model'
+import { IContainmentTreeNode } from '../../models/containment-tree-node.interface'
 
 @Component({
   selector: 'num-aql-editor-creator',
@@ -132,6 +135,14 @@ export class AqlEditorCeatorComponent {
   }
 
   openBuilderDialog(mode: AqlBuilderDialogMode): void {
+    if (mode === AqlBuilderDialogMode.Criteria) {
+      const node = new (class implements IContainmentTreeNode {
+        displayName = 'EHR'
+      })()
+      this.aqbModel.selectDestination = AqbSelectDestination.From
+      this.aqbModel.select = [new AqbSelectItemUiModel(node, 0, 0, 'ehr', '')]
+    }
+
     const dialogContentPayload: IAqlBuilderDialogInput = {
       mode: mode,
       model: this.aqbModel,

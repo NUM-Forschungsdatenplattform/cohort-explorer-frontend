@@ -17,7 +17,7 @@ import { AqbUiModel } from '../../../../shared/models/aqb/aqb-ui.model'
 import { COMPILE_ERROR_CONFIG } from './constants'
 
 import { DialogAqlBuilderComponent } from './dialog-aql-builder.component'
-import { selectClickTestCases } from './tests/select-click-testcases'
+import { ISelectClickTest, selectClickTestCases } from './tests/select-click-testcases'
 import { AqlBuilderContainsComponent } from '../aql-builder-contains/aql-builder-contains.component'
 import { AqlBuilderSelectComponent } from '../aql-builder-select/aql-builder-select.component'
 import { AqlBuilderTemplatesComponent } from '../aql-builder-templates/aql-builder-templates.component'
@@ -40,11 +40,13 @@ describe('DialogAqlBuilderComponent', () => {
   @Component({ selector: 'num-aql-builder-select', template: '' })
   class SelectStubComponent {
     @Input() aqbModel: any
+    @Input() dialogMode: any
   }
   @Component({ selector: 'num-aql-builder-contains', template: '' })
   class ContainsStubComponent {
     @Input() compositions: any
     @Input() aqbModel: any
+    @Input() dialogMode: any
   }
   @Component({ selector: 'num-aql-builder-where', template: '' })
   class WhereStubComponent {
@@ -111,10 +113,10 @@ describe('DialogAqlBuilderComponent', () => {
     jest.clearAllMocks()
   })
 
-  describe('When the dialog is in aqlEditor mode', () => {
+  describe('When the dialog is in Search mode', () => {
     beforeEach(() => {
       component.dialogInput = {
-        mode: AqlBuilderDialogMode.Criteria,
+        mode: AqlBuilderDialogMode.Search,
         model: new AqbUiModel(),
       }
 
@@ -125,9 +127,20 @@ describe('DialogAqlBuilderComponent', () => {
       expect(component).toBeTruthy()
       expect(aqlEditorService.getTemplates).toHaveBeenCalled()
     })
+  })
 
-    test.each(selectClickTestCases)(
-      'should call or not call the aqb Model to handle the clickEvent',
+  describe('When the dialog is', () => {
+    beforeEach(() => {
+      component.dialogInput = {
+        mode: AqlBuilderDialogMode.Search, //overwritten in test
+        model: new AqbUiModel(),
+      }
+
+      fixture.detectChanges()
+    })
+
+    test.each<ISelectClickTest>(selectClickTestCases)(
+      'in $mode mode should call or not call the aqb Model to handle the clickEvent (%#)',
       (testcase) => {
         jest.spyOn(component.aqbModel, 'handleElementSelect')
 
