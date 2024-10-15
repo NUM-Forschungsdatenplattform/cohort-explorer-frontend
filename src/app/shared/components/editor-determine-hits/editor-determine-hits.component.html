@@ -31,7 +31,8 @@
       @if (isButtonDisabled) {
         {{ content?.defaultMessage | translate }}
       }
-      @if (!isButtonDisabled && isCohortValid?.valid === true && isCohortValid?.hasAql === true) {
+      @if ((!isButtonDisabled && isCohortValid === undefined) ||
+        (isCohortValid?.valid === true && isCohortValid?.hasAql === true)) {
         {{ content?.message | translate }}
       }
       @if (isCohortValid?.hasAql === false) {
