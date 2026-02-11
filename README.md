@@ -1,28 +1,26 @@
-# NumPortalWebapp
+# Cohort Explorer – Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.4.
+This repository contains the frontend and the user documentation for the Cohort Explorer.
 
-## Development server
+Cohort Explorer is a web application to explore and visualize cohorts by using an openEHR clinical data repository.
 
-Run `ng serve num-portal-webapp` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Development
 
-## Code scaffolding
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+### Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
+### Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+### Running unit tests
 
 Run `npm run test` to execute the unit tests via [Jest](https://jestjs.io/).
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-
-## Add Feature
+### Add Feature
 
 To add feature that can be activated, you must expand the [available-feature-enum.ts](src/app/shared/models/feature/available-features.enum.ts) 
 and [feature.interface.ts](src/app/shared/models/feature/feature.interface.ts).
